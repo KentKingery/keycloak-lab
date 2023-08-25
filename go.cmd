@@ -1,0 +1,1 @@
+podman run -v keycloak_data:/opt/keycloak/data -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin --name keycloak -d quay.io/keycloak/keycloak:22.0.1 start-dev
