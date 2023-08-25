@@ -8,5 +8,4 @@ https://www.keycloak.org/
 
 ## Resources
 
-Using Keycloak in C# for .NET 6  
-https://nikiforovall.github.io/aspnetcore/dotnet/2022/08/24/dotnet-keycloak-auth.html
+[Using Keycloak in C# for .NET 6](https://nikiforovall.github.io/aspnetcore/dotnet/2022/08/24/dotnet-keycloak-auth.html)
