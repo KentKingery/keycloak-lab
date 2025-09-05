@@ -3,8 +3,8 @@ services:
     image: "quay.io/keycloak/keycloak:26.3.3"
     command: start-dev
     environment:
-      KEYCLOAK_ADMIN: "admin"
-      KEYCLOAK_ADMIN_PASSWORD: "p@ssw0rd"
+      KC_BOOTSTRAP_ADMIN_USERNAME: "admin"
+      KC_BOOTSTRAP_ADMIN_PASSWORD: "p@ssw0rd"
       KC_DB: postgres
       KC_DB_VENDOR: postgres
       KC_DB_URL: jdbc:postgresql://db:5432/keycloak
@@ -14,10 +14,14 @@ services:
       - "8180:8080"
     depends_on:
       - db
-
   db:
-    image: postgres:13.22
+    image: postgres:17.6-alpine3.22
     environment:
       POSTGRES_DB: keycloak
       POSTGRES_USER: keycloak
       POSTGRES_PASSWORD: p@ssw0rd
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
