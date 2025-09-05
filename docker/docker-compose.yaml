@@ -1,0 +1,23 @@
+services:
+  keycloak:
+    image: "quay.io/keycloak/keycloak:26.3.2"
+    command: start-dev
+    environment:
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+    volumes:
+      - type: volume
+        source: keycloak_data
+        target: /opt/keycloak/data
+    ports:
+      - "8180:8080"
+    restart: unless-stopped
+    networks:
+      - globalco
+
+networks:
+  globalco:
+    driver: bridge
+
+volumes:
+  keycloak_data:
