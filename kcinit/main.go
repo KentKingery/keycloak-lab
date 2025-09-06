@@ -27,6 +27,8 @@ func main() {
 		slog.Info("Realm Display Name: " + realm.DisplayName)
 	}
 
+	CreateRealm(token.AccessToken, "globalco", "GlobalCo")
+
 	slog.Info("Keycloak initialization ended")
 
 }
