@@ -8,6 +8,12 @@
 *.so
 *.dylib
 
+# Build directory
+bin/
+
+# Mac stuff
+.DS_Store
+
 # Test binary, built with `go test -c`
 *.test
 
