@@ -1,34 +1,42 @@
 package main
 
 import (
-	"log/slog"
-	"strconv"
-	"time"
+	"kcinit/cmd"
 )
+
+//"fmt"
+//"log/slog"
+//"strconv"
+//"time"
+
+//"github.com/spf13/cobra"
 
 func main() {
 
-	slog.Info("Keycloak initialization started")
+	cmd.Execute()
 
-	slog.Info("Acquiring token from Keycloak server")
-	token := GetToken()
-	expiry := time.Now().Add(time.Second * time.Duration(token.ExpiresIn))
-	slog.Info("Token acquired")
-	slog.Info("Token length: " + strconv.Itoa(len(token.AccessToken)))
-	slog.Info("Token expiry: " + expiry.Format("2006-01-02 15:04:05"))
+	/*
+		slog.Info("Keycloak initialization started")
 
-	slog.Info("Fetching realms from Keycloak server")
+		slog.Info("Acquiring token from Keycloak server")
+		token := GetToken()
+		expiry := time.Now().Add(time.Second * time.Duration(token.ExpiresIn))
+		slog.Info("Token acquired")
+		slog.Info("Token length: " + strconv.Itoa(len(token.AccessToken)))
+		slog.Info("Token expiry: " + expiry.Format("2006-01-02 15:04:05"))
 
-	realms := GetRealms(token.AccessToken)
-	slog.Info("# of realms: " + strconv.Itoa(len(realms)))
-	for _, realm := range realms {
-		slog.Info("Realm ID: " + realm.ID)
-		slog.Info("Realm Name: " + realm.Realm)
-		slog.Info("Realm Display Name: " + realm.DisplayName)
-	}
+		slog.Info("Fetching realms from Keycloak server")
 
-	CreateRealm(token.AccessToken, "globalco", "GlobalCo")
+		realms := GetRealms(token.AccessToken)
+		fmt.Println("# of realms: " + strconv.Itoa(len(realms)))
+		fmt.Println("ID\t\t\t\t\tName\t\tDisplay Name")
+		for _, realm := range realms {
+			fmt.Println(realm.ID + "\t" + realm.Realm + "\t\t" + realm.DisplayName)
+		}
 
-	slog.Info("Keycloak initialization ended")
-
+		CreateRealm(token.AccessToken, "globalco", "GlobalCo")
+		// DeleteRealm(token.AccessToken, "globalco")
+		CreateUser(token.AccessToken, "globalco", "kentkingery", "Kent", "Kingery", "kent@globalco.io")
+		slog.Info("Keycloak initialization ended")
+	*/
 }

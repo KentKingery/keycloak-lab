@@ -100,3 +100,39 @@ func CreateRealm(accessToken string, realmName string, displayName string) {
 		}
 	*/
 }
+
+func DeleteRealm(accessToken string, realmName string) {
+	bearer := "Bearer " + accessToken
+
+	realmURL := "http://localhost:8180/admin/realms/" + realmName
+
+	req, err := http.NewRequest("DELETE", realmURL, nil)
+	req.Header.Add("Authorization", bearer)
+
+	if err != nil {
+		slog.Error(err.Error())
+		os.Exit(1)
+	}
+
+	response, err := http.DefaultClient.Do(req)
+	if err != nil {
+		slog.Error(err.Error())
+		os.Exit(1)
+	}
+	defer response.Body.Close()
+
+	/*
+		responseData, err := io.ReadAll(response.Body)
+		jsonData := []byte(responseData)
+		if err != nil {
+			slog.Error(err.Error())
+			os.Exit(1)
+		}
+
+		err = json.Unmarshal(jsonData, &realms)
+		if err != nil {
+			slog.Error(err.Error())
+			os.Exit(1)
+		}
+	*/
+}
