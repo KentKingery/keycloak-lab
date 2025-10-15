@@ -41,7 +41,8 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-
+		realmName := ""
+		realmDisplayName := ""
 		flag := ""
 		if len(args) > 0 {
 			flag = args[0]
@@ -62,13 +63,15 @@ to quickly create a Cobra application.`,
 			w.Flush()
 
 		case "rm":
-			realmName := args[1]
+			realmName = args[1]
 			token := utility.GetToken()
 			DeleteRealm(token.AccessToken, realmName)
 
 		case "create":
-			realmName := args[1]
-			realmDisplayName := args[2]
+			realmName = args[1]
+			if len(args) > 2 {
+				realmDisplayName = args[2]
+			}
 			token := utility.GetToken()
 			CreateRealm(token.AccessToken, realmName, realmDisplayName)
 
@@ -81,7 +84,7 @@ Manage realms
 Commands:
   create      Create a realm
   ls          List realms
-  rm          Remove one or more networks
+  rm          Remove realm
   `
 			fmt.Println(helpText)
 		}
